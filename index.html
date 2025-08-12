@@ -16,10 +16,8 @@
     <script type="module" src="script.js" defer></script>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <h1>Página de Productos</h1>
-      <!-- Navegación principal -->
       <nav>
         <ul>
           <li class="cart">
@@ -28,46 +26,76 @@
         </ul>
       </nav>
     </header>
+
     <main>
-      <!-- Sidebar -->
       <aside class="sidebar">
         <div class="search">
           <h2>Buscar Productos</h2>
-          <input type="text" placeholder="Buscar..." />
+          <input id="search" type="text" placeholder="Buscar..." />
         </div>
+
         <div class="categories">
           <h2>Categorías</h2>
-          <label class="category"><input type="checkbox" /> Ropa</label>
-          <label class="category"><input type="checkbox" /> Accesorios</label>
-          <label class="category"><input type="checkbox" /> Electrónica</label>
+          <label class="category">
+            <input name="category" data-category="clothing" type="checkbox" />
+            Ropa
+          </label>
+          <label class="category">
+            <input
+              name="category"
+              data-category="accessories"
+              type="checkbox"
+            />
+            Accesorios
+          </label>
+          <label class="category">
+            <input
+              name="category"
+              data-category="electronics"
+              type="checkbox"
+            />
+            Electrónica
+          </label>
         </div>
 
         <div class="prices">
           <h2>Filtrar por precio</h2>
           <label>
             Mínimo:
-            <input type="number" min="0" step="0.01" placeholder="0.00" />
+            <input
+              name="price-filter"
+              id="min-price"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+            />
           </label>
           <label>
             Máximo:
-            <input type="number" min="0" step="0.01" placeholder="0.00" />
+            <input
+              name="price-filter"
+              id="max-price"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+            />
           </label>
         </div>
       </aside>
 
-      <!-- Productos -->
       <section class="products">
         <div class="products-header">
           <p>Explora nuestra selección de productos a continuación:</p>
         </div>
-        <!-- Aquí se agregarán los productos con JavaScript -->
       </section>
     </main>
+
     <footer class="footer">
       <p>&copy; Copyright genérico :v</p>
     </footer>
 
-    <!-- Modal -->
     <dialog id="product-modal" closedby="any">
       <form method="dialog" id="modal-form">
         <div class="modal-header">
@@ -77,26 +105,21 @@
 
         <div id="modal-middle">
           <p id="modal-product-description"></p>
-          <img
-            id="modal-product-image"
-            src="ruta-a-tu-imagen.jpg"
-            alt="Imagen del producto"
-          />
+          <img id="modal-product-image" src="" alt="Imagen del producto" />
         </div>
 
         <footer id="modal-footer">
           <p id="modal-product-price"></p>
-
-          <label
-            >Cantidad:
+          <label>
+            Cantidad:
             <input
               type="number"
               id="modal-quantity"
               name="quantity"
               min="1"
               value="1"
-          /></label>
-
+            />
+          </label>
           <button type="submit">Agregar al Carrito</button>
         </footer>
       </form>
