@@ -310,3 +310,5 @@ function initializeApp() {
 }
 
 initializeApp();
+
+// TODO: Add cart functionality
