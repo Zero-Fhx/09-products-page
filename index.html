@@ -64,7 +64,42 @@
       </section>
     </main>
     <footer class="footer">
-      <p>&copy; 2025 Mi Tienda. Todos los derechos reservados.</p>
+      <p>&copy; Copyright genérico :v</p>
     </footer>
+
+    <!-- Modal -->
+    <dialog id="product-modal" closedby="any">
+      <form method="dialog" id="modal-form">
+        <div class="modal-header">
+          <h2 id="modal-product-title"></h2>
+          <button id="modal-close-button" aria-label="Cerrar">&times;</button>
+        </div>
+
+        <div id="modal-middle">
+          <p id="modal-product-description"></p>
+          <img
+            id="modal-product-image"
+            src="ruta-a-tu-imagen.jpg"
+            alt="Imagen del producto"
+          />
+        </div>
+
+        <footer id="modal-footer">
+          <p id="modal-product-price"></p>
+
+          <label
+            >Cantidad:
+            <input
+              type="number"
+              id="modal-quantity"
+              name="quantity"
+              min="1"
+              value="1"
+          /></label>
+
+          <button type="submit">Agregar al Carrito</button>
+        </footer>
+      </form>
+    </dialog>
   </body>
 </html>
