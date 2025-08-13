@@ -94,9 +94,17 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <p>&copy; Copyright genérico :v</p>
-    </footer>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h2>Tu Carrito</h2>
+        <button id="cart-close-button" aria-label="Cerrar">&times;</button>
+      </div>
+      <div id="cartItems"></div>
+      <footer class="cart-sidebar-footer">
+        <strong>Total: $<span id="cartTotal">0.00</span></strong>
+        <button id="checkout-button">Finalizar compra</button>
+      </footer>
+    </aside>
 
     <dialog id="product-modal" closedby="any">
       <form method="dialog" id="modal-form">
@@ -125,6 +133,33 @@
           <button type="submit">Agregar al Carrito</button>
         </footer>
       </form>
+    </dialog>
+
+    <dialog
+      id="purchase-notification"
+      class="notification-modal"
+      closedby="any"
+    >
+      <div class="notification-content">
+        <div class="notification-header">
+          <h2>¡Compra Realizada!</h2>
+          <button id="notification-close-button" aria-label="Cerrar">
+            &times;
+          </button>
+        </div>
+        <div class="notification-body">
+          <p>Tu pedido ha sido procesado exitosamente.</p>
+          <div class="purchase-summary">
+            <h3>Resumen de tu compra:</h3>
+            <div id="purchase-items"></div>
+            <div class="purchase-total">
+              <strong
+                >Total: $<span id="purchase-total-amount">0.00</span></strong
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </dialog>
   </body>
 </html>
