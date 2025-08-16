@@ -1,0 +1,25 @@
+{
+  "name": "09-products-page",
+  "version": "1.0.0",
+  "description": "Una página de productos completa con carrito de compras y sistema de filtrado desarrollada con HTML, CSS y JavaScript vanilla. Este es el **Proyecto #9** de mi serie de proyectos de desarrollo web.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zero-Fhx/09-products-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Zero-Fhx/09-products-page/issues"
+  },
+  "homepage": "https://github.com/Zero-Fhx/09-products-page#readme",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "standard": "^17.1.2"
+  }
+}
