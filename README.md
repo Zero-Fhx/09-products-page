@@ -193,117 +193,117 @@ Este proyecto incluye todas las características esenciales de una página de pr
 ```javascript
 const state = {
   filter: {
-    search: "",
+    search: '',
     categories: [],
     price: {
       min: 0,
-      max: Infinity,
-    },
+      max: Infinity
+    }
   },
   cart: [],
-  actualProduct: null,
-};
+  actualProduct: null
+}
 ```
 
 ### Sistema de Filtrado Avanzado
 
 ```javascript
 const FilterManager = {
-  handleCategoryChange(e) {
-    const category = e.target.dataset.category;
+  handleCategoryChange (e) {
+    const category = e.target.dataset.category
 
     if (e.target.checked) {
       if (!state.filter.categories.includes(category)) {
-        state.filter.categories.push(category);
+        state.filter.categories.push(category)
       }
     } else {
       const remainingCategories = state.filter.categories.filter(
-        (cat) => cat !== category
-      );
+        cat => cat !== category
+      )
 
       if (remainingCategories.length === 0) {
-        e.target.checked = true;
-        return;
+        e.target.checked = true
+        return
       }
 
-      state.filter.categories = remainingCategories;
+      state.filter.categories = remainingCategories
     }
-    ProductManager.filterProducts();
+    ProductManager.filterProducts()
   },
 
-  handlePriceChange(e) {
-    const key = e.target.id === "min-price" ? "min" : "max";
-    const value = parseFloat(e.target.value);
-    const currentValue = isNaN(value) ? (key === "min" ? 0 : Infinity) : value;
+  handlePriceChange (e) {
+    const key = e.target.id === 'min-price' ? 'min' : 'max'
+    const value = parseFloat(e.target.value)
+    const currentValue = isNaN(value) ? (key === 'min' ? 0 : Infinity) : value
 
-    state.filter.price[key] = currentValue;
-    ProductManager.filterProducts();
-  },
-};
+    state.filter.price[key] = currentValue
+    ProductManager.filterProducts()
+  }
+}
 ```
 
 ### Gestión del Carrito con Persistencia
 
 ```javascript
 const CartManager = {
-  addToCart(productId, quantity = 1) {
-    const product = products.find((p) => p.id === productId);
-    const cartItemExists = state.cart.find((item) => item.id === productId);
+  addToCart (productId, quantity = 1) {
+    const product = products.find(p => p.id === productId)
+    const cartItemExists = state.cart.find(item => item.id === productId)
 
     if (cartItemExists) {
-      cartItemExists.quantity += quantity;
+      cartItemExists.quantity += quantity
     } else {
       state.cart.push({
         id: product.id,
         price: product.price,
-        quantity: quantity,
-      });
+        quantity
+      })
     }
 
-    this.saveToLocalStorage();
-    this.updateCartDisplay();
+    this.saveToLocalStorage()
+    this.updateCartDisplay()
   },
 
-  saveToLocalStorage() {
-    localStorage.setItem("cart", JSON.stringify(state.cart));
+  saveToLocalStorage () {
+    localStorage.setItem('cart', JSON.stringify(state.cart))
   },
 
-  loadFromLocalStorage() {
-    const savedCart = localStorage.getItem("cart");
+  loadFromLocalStorage () {
+    const savedCart = localStorage.getItem('cart')
     if (savedCart) {
-      state.cart = JSON.parse(savedCart);
+      state.cart = JSON.parse(savedCart)
     }
-  },
-};
+  }
+}
 ```
 
 ### Feedback Visual con Animaciones
 
 ```javascript
 const UI = {
-  createBubbleFeedback(text, button) {
-    const bubble = document.createElement("span");
-    bubble.classList.add("bubble-feedback");
-    bubble.textContent = text;
+  createBubbleFeedback (text, button) {
+    const bubble = document.createElement('span')
+    bubble.classList.add('bubble-feedback')
+    bubble.textContent = text
 
-    button.style.position = "relative";
-    button.appendChild(bubble);
+    button.style.position = 'relative'
+    button.appendChild(bubble)
 
-    bubble.addEventListener("animationend", () => {
-      bubble.remove();
-    });
-  },
-};
+    bubble.addEventListener('animationend', () => {
+      bubble.remove()
+    })
+  }
+}
 ```
 
 ### Creación Dinámica de Productos
 
 ```javascript
 const ProductManager = {
-  createProductElement(product) {
-    const productElement = document.createElement("article");
-    productElement.classList.add("product");
-    productElement.setAttribute("data-id", product.id);
+  createProductElement (product) {
+    const productElement = document.createElement('article')
+    productElement.classList.add('product')
+    productElement.setAttribute('data-id', product.id)
     productElement.innerHTML = `
       <img src="${product.image}" alt="Imagen de ${product.title}" />
       <div class="product-info">
@@ -314,33 +314,33 @@ const ProductManager = {
         <span class="price">$${product.price.toFixed(2)}</span>
         <button class="add-to-cart">+</button>
       </footer>
-    `;
+    `
 
-    this.attachProductEvents(productElement, product);
-    return productElement;
-  },
-};
+    this.attachProductEvents(productElement, product)
+    return productElement
+  }
+}
 ```
 
 ### Validación de Filtros de Precio
 
 ```javascript
-validatePriceInputs() {
-  const minInput = document.getElementById("min-price");
-  const maxInput = document.getElementById("max-price");
-  const minValue = parseFloat(minInput.value);
-  const maxValue = parseFloat(maxInput.value);
+validatePriceInputs () {
+  const minInput = document.getElementById('min-price')
+  const maxInput = document.getElementById('max-price')
+  const minValue = parseFloat(minInput.value)
+  const maxValue = parseFloat(maxInput.value)
 
-  minInput.classList.remove("price-error");
-  maxInput.classList.remove("price-error");
+  minInput.classList.remove('price-error')
+  maxInput.classList.remove('price-error')
 
   if (!isNaN(minValue) && !isNaN(maxValue) && minValue > maxValue) {
-    minInput.classList.add("price-error");
-    maxInput.classList.add("price-error");
-    return false;
+    minInput.classList.add('price-error')
+    maxInput.classList.add('price-error')
+    return false
   }
 
-  return true;
+  return true
 }
 ```
 
